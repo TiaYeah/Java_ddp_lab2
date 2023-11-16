@@ -1,11 +1,10 @@
 package com.example.lab2;
 
 //import com.example.lab2.webservice.Server;
+//import com.example.lab2.webservice.ServerService;
+import com.example.lab2.webservice.ServerMessage;
 import com.example.lab2.webservice.ServerController;
 import com.example.lab2.webservice.ServerControllerService;
-//import com.example.lab2.webservice.ServerService;
-import com.example.lab2.webservice.Model;
-import com.example.lab2.webservice.ServerMessage;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,11 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
-import java.net.Socket;
 import java.net.URL;
 
 public class ClientController {
@@ -178,8 +173,6 @@ public class ClientController {
                     alert.setTitle("Игра окончена");
                     alert.setHeaderText("Игра окончена");
 
-                    //alert.setX(anchorPane.getScene().getWindow().getWidth() / 2 - alert.getWidth());
-                    //alert.setY(anchorPane.getScene().getWindow().getHeight() / 2 - alert.getHeight());
                     alert.initOwner(anchorPane.getScene().getWindow());
                     alert.showAndWait();
 
@@ -238,61 +231,6 @@ public class ClientController {
 
             }
 
-        }
-    }
-    private void updateField() {
-        for (int i = 0; i < 19; i++) {
-            for (int j = 0; j < 19; j++) {
-                if (model.getField().get(i).getItem().get(j) != null) {
-                    if (!model.getField().get(i).getItem().get(j).equals(model.getFirstPlayerName())) {
-                        int y = i;
-                        int x = j;
-                        Platform.runLater(() -> {
-                            anchorPane.getChildren().remove(circles[y][x]);
-                            Circle circle = new Circle();
-                            circle.setFill(Color.WHITE);
-                            circle.setStroke(Color.BLACK);
-                            circle.setStrokeWidth(1);
-                            circle.setRadius(14);
-                            circle.setCenterX(circles[y][x].getCenterX());
-                            circle.setCenterY(circles[y][x].getCenterY());
-                            InnerShadow innerShadowBlack = new InnerShadow();
-                            innerShadowBlack.setChoke(0.1);
-                            innerShadowBlack.setWidth(1);
-                            innerShadowBlack.setHeight(1);
-                            innerShadowBlack.setRadius(5);
-                            innerShadowBlack.setOffsetY(-4);
-                            circle.setEffect(innerShadowBlack);
-                            circles[y][x] = circle;
-                            anchorPane.getChildren().add(circle);
-                        });
-                    } else {
-                        int y = i;
-                        int x = j;
-                        Platform.runLater(() -> {
-                            anchorPane.getChildren().remove(circles[y][x]);
-                            Circle circle = new Circle();
-                            circle.setFill(Color.BLACK);
-                            circle.setStroke(Color.BLACK);
-                            circle.setStrokeWidth(1);
-                            circle.setRadius(14);
-                            circle.setCenterX(circles[y][x].getCenterX());
-                            circle.setCenterY(circles[y][x].getCenterY());
-                            Light.Distant light = new Light.Distant();
-                            light.setAzimuth(-45.0f);
-
-                            Lighting l = new Lighting();
-                            l.setLight(light);
-                            l.setSurfaceScale(20.0f);
-                            circle.setEffect(l);
-                            circles[y][x] = circle;
-                            anchorPane.getChildren().add(circle);
-                        });
-
-                    }
-
-                }
-            }
         }
     }
 }

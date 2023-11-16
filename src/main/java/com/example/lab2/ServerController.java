@@ -23,18 +23,14 @@ public class ServerController {
     private void startGame() {
         Random random = new Random();
         String startName = "Игрок" + (random.nextInt(2) + 1);
-        model.currentTurn = startName;
-        model.firstPlayerName = startName;
-        serverMessage.currentTurn = startName;
-        serverMessage.firstPlayerName = startName;
+        model.currentTurn = serverMessage.currentTurn = startName;
+        model.firstPlayerName = serverMessage.firstPlayerName = startName;
         System.out.println("Игра началась");
     }
 
-    @WebMethod
-    public Model getModel() {
-        return model;
-    }
 
+
+    @WebMethod
     public ServerMessage getState() {
         return serverMessage;
     }
@@ -45,7 +41,7 @@ public class ServerController {
         serverMessage.lastX = x;
         serverMessage.lastY = y;
         serverMessage.lastPlayerName = player;
-        printModel();
+
         if (model.doTurn(y, x)) {
             model.remainderTurns = serverMessage.remainderTurns = 0;
             model.winnerName = serverMessage.winnerName = player;
@@ -65,9 +61,5 @@ public class ServerController {
         }
     }
 
-    @WebMethod
-    public int sayHello(String message, String from) {
-        System.out.println(message + " From: " + from);
-        return 5;
-    }
+
 }

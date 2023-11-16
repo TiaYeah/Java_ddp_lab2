@@ -26,54 +26,6 @@ public interface ServerController {
 
     /**
      * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "doTurn", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.DoTurn")
-    @ResponseWrapper(localName = "doTurnResponse", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.DoTurnResponse")
-    @Action(input = "http://lab2.example.com/ServerController/doTurnRequest", output = "http://lab2.example.com/ServerController/doTurnResponse")
-    public void doTurn(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "sayHello", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.SayHello")
-    @ResponseWrapper(localName = "sayHelloResponse", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.SayHelloResponse")
-    @Action(input = "http://lab2.example.com/ServerController/sayHelloRequest", output = "http://lab2.example.com/ServerController/sayHelloResponse")
-    public int sayHello(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
-
-    /**
-     * 
-     * @return
-     *     returns com.example.lab2.webservice.Model
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getModel", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.GetModel")
-    @ResponseWrapper(localName = "getModelResponse", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.GetModelResponse")
-    @Action(input = "http://lab2.example.com/ServerController/getModelRequest", output = "http://lab2.example.com/ServerController/getModelResponse")
-    public Model getModel();
-
-    /**
-     * 
      * @return
      *     returns java.lang.String
      */
@@ -95,5 +47,23 @@ public interface ServerController {
     @ResponseWrapper(localName = "getStateResponse", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.GetStateResponse")
     @Action(input = "http://lab2.example.com/ServerController/getStateRequest", output = "http://lab2.example.com/ServerController/getStateResponse")
     public ServerMessage getState();
+
+    /**
+     * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "doTurn", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.DoTurn")
+    @ResponseWrapper(localName = "doTurnResponse", targetNamespace = "http://lab2.example.com/", className = "com.example.lab2.webservice.DoTurnResponse")
+    @Action(input = "http://lab2.example.com/ServerController/doTurnRequest", output = "http://lab2.example.com/ServerController/doTurnResponse")
+    public void doTurn(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        int arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2);
 
 }
